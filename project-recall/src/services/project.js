@@ -5,7 +5,7 @@ import {
   addDoc,
   doc,
   deleteDoc,
-  orderBy,
+  // orderBy,
   // limit,
   Timestamp,
   where,
@@ -37,17 +37,30 @@ export async function delSummary(id) {
   await deleteDoc(doc(firestore, "summaries", id));
 }
 
-export async function fetchSummary({uid}) {
-    // console.log(uid)
-    const snapshot = await getDocs(
-        query(collection(firestore, "summaries"), where("uid", "==", uid), orderBy("date", "desc"))
-    );
-    const check = snapshot.docs.map((doc) => ({
+export async function fetchProjects(uid) {
+  console.log(uid)
+  if (!uid) return;
+    // const snapshot = await getDocs(
+    //     query(collection(firestore, "summaries"), where("uid", "==", uid), orderBy("date", "desc"))
+    // );
+    // const check = snapshot.docs.map((doc) => ({
+    //     id: doc.id,
+    //     ...doc.data(),
+    // }));
+    // // console.log(check);
+    // return check
+    
+      const collectionRef = collection(firestore, "projects");
+      const condition = where("userId", "==", uid);
+      const dbQuery = query(collectionRef, condition);
+    
+      const snapshot = await getDocs(dbQuery);
+      const check = snapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
     }));
-    // console.log(check);
-    return check
+    return check;
+    
 }
 
 export const uploadImage = (file, progressCallback, urlCallback, errorCallback) => {

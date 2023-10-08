@@ -1,8 +1,5 @@
 import React, { useRef, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
-
-// import Modal from "../../Modal/Modal";
-// import InputControl from "../../InputControl/InputControl";
 import {
     Button,
     Modal,
