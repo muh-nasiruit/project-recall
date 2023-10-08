@@ -408,6 +408,15 @@ hr{
   width: 100%;
 }
 
+.sec2-card-container{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 40px;
+  row-gap: 40px;
+  text-align: center;
+  justify-content: space-evenly;
+  
+}
 .sec2-content {
   padding: 60px 40px;
   /* width: 40%;
@@ -419,14 +428,6 @@ hr{
   background-color: white;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 
-}
-.sec2-card-container{
-  /* padding: 0px  100px; */
-  display: grid;
-  grid-template-columns: auto auto auto;
-  column-gap: 40px;
-  row-gap: 40px;
-  
 }
 
 .sec2-card img {
