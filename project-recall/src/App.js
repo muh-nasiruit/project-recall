@@ -155,7 +155,7 @@ function App() {
                 <CircularProgress color="inherit" />
               ) : (
                 <form autoComplete="off" onSubmit={handleSubmit}>
-                  <h3>Enter your credentials</h3>
+                  <h3>Sign in to your account</h3>
                   <TextField
                     placeholder="Enter Email"
                     id="email"
@@ -197,12 +197,12 @@ function App() {
                   <Button variant="outlined" color="secondary" type="submit">
                     Login
                   </Button>
+                  <p></p>
+                  <small>
+                    Need an account? <Link to="/register">Register here</Link>
+                  </small>
                 </form>
               )}
-              <p></p>
-              <small>
-                Need an account? <Link to="/register">Register here</Link>
-              </small>
             </div>
           </Modal>
         </div>

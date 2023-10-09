@@ -1,6 +1,6 @@
 body {
-  /* margin: 0;
-  padding: 0; */
+  margin: 0;
+  padding: 0;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -13,8 +13,8 @@ code {
 }
 
 .landing {
-  margin: 0;
-  padding: 0;
+  /* margin: 0;
+  padding: 0; */
   font-family: 'Roboto', sans-serif;
   width: 100%;
   height: 100vh;
@@ -73,7 +73,61 @@ code {
   color: black;
 }
 
+.main-signup {
+  display: flex;
+  height: 100vh;
+  /* margin: 5rem; */
+  /* top:50%;
+  left: 50%; */
+  /* box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); */
+  /* border-radius: 5%; */
+}
+
+.signup-subcontainer {
+  display: flex;
+  margin: 5rem;
+  top:50%;
+  left: 50%;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 5%;
+  align-items: center;
+  width: 100%;
+
+}
+.signup-subcontainer:hover {
+  box-shadow: 6px 6px 3px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease 0s;
+}
+.signup-container {
+  display: flex;
+  /* flex-direction: row; */
+  width: 30%;
+}
+
+.signup-container > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  
+}
+
+
+.main-signup-img {
+  display: flex;
+  width: 70%; 
+  height: 100%;
+}
+
+.main-signup-img > img {
+  width: 100%;
+  object-fit: cover;
+}
+
 .error-message{
+  /* width: 100px; */
+  /* text-align: center; */
   color: red;
   font-size: 13px;
 }
@@ -261,7 +315,7 @@ hr{
   /* background-size: cover ; */
   /* padding: 20px; */
   height: 100%;
-  margin: -8px;
+  /* margin: -8px; */
   /* min-height: 100vh; */
   box-sizing: border-box;
 }
@@ -418,15 +472,19 @@ hr{
   
 }
 .sec2-content {
-  padding: 60px 40px;
+  padding: 15px 40px;
   /* width: 40%;
   font-weight: 400; */
+  text-decoration: underline;
 }
 .sec2-card {
   width: 320px;
-  height: 250px;
+  height: 100%;
   background-color: white;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 5%;
+  padding: 10px;
+  cursor: pointer;
 
 }
 
@@ -449,4 +507,45 @@ hr{
     row-gap: 20px; /* Reduce row gap for smaller screens */
     padding: 10px;
   }
+}
+
+.searchbox-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+
+}
+.searchboxinput {
+  display: flex;
+  border: 1px solid gray;
+  border-radius: 50px;
+  padding-left: 15px;
+  width:50%;
+}
+
+.sec2-tags {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.dash-card {
+  display: flex;
+  width: 200px;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 5%;
+  flex-direction: column;
+  padding: 10px;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.dash-card:hover {
+  box-shadow: 6px 6px 3px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease 0s;
 }

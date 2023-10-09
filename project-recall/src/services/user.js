@@ -12,15 +12,20 @@ import {
   where,
 } from "firebase/firestore";
 
-export async function createUser({ uid, text, title }) {
+export async function createUser(payLoad) {
 //   const userDetails = JSON.parse(localStorage.getItem('userDetails'));
-  const data = { uid: uid,
-     text: text,
-     title: title,
-     date: Timestamp.now() };
-  const docRef = await addDoc(collection(firestore, "users"), data);
-  console.log('Data Saved!')
-  return { id: docRef.id, ...data };
+if (typeof payLoad !== "object") return;
+  const data = { 
+    // id: v4(),
+     username: payLoad.userName,
+     email: payLoad.email,
+     password: payLoad.passWord,
+     createdAt: Timestamp.now() };
+  // const data = {...payLoad, startedAt: Timestamp.now()}
+  await addDoc(collection(firestore, "users"), { ...data });
+  console.log('User Created!', data)
+  // return { id: docRef.id, ...payLoad };
+  return;
 }
 
 export async function delUser(id) {
