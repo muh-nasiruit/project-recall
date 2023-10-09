@@ -143,7 +143,7 @@ export function AddProject(props) {
             </div>
 
             <TextField
-              label="Github"
+              label="Github Link"
               value={values.githubLink}
               placeholder="Project Repository Link"
               onChange={(event) =>
@@ -193,7 +193,7 @@ export function AddProject(props) {
               <div className="pro-top">
                 <p className="pro-title">Tech Stack</p>
                 <p className="pro-link" onClick={handleAddPoint}>
-                  + Add point
+                  + Add a Tag
                 </p>
               </div>
               <div className="pro-inputs">
@@ -201,7 +201,7 @@ export function AddProject(props) {
                   <div className="pro-input" key={index}>
                     <TextField
                       key={index}
-                      placeholder="Mention Tags"
+                      placeholder="Attach Tags"
                       value={item}
                       onChange={(event) =>
                         handlePointUpdate(event.target.value, index)

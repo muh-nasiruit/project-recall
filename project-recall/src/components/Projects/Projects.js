@@ -3,6 +3,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import { fetchProjects } from "../../services/project";
 import { CircularProgress, Chip, IconButton, InputBase } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import ProjectModal from "./ProjectModal/ProjectModal";
 
 export default function Projects() {
   const search = useRef("");
@@ -12,6 +13,8 @@ export default function Projects() {
   const [email, setEmail] = useState("");
   const [projectsArr, setProjects] = useState([]);
   const [projectsLoaded, setProjectsLoaded] = useState(false);
+  const [showProjectModal, setShowProjectModal] = useState(false);
+  const [details, setDetails] = useState(null)
 
   useEffect(() => {
     const userName = localStorage.getItem("currentUserName");
@@ -44,46 +47,54 @@ export default function Projects() {
             <h2>Current Projects</h2>
           </div>
           <div className="searchbox-container">
-
-          <div className="searchboxinput">
-            <InputBase
-              // className={}
-              inputRef={search}
-              sx={{ ml: 1, flex: 1, width: "50%" }}
-              placeholder="Search Here"
-              onChange={(e) => setSearched(e.target.value)}
-              // inputProps={{ 'aria-label': 'search google maps' }}
+            <div className="searchboxinput">
+              <InputBase
+                // className={}
+                inputRef={search}
+                sx={{ ml: 1, flex: 1, width: "50%" }}
+                placeholder="Search Here"
+                onChange={(e) => setSearched(e.target.value)}
+                // inputProps={{ 'aria-label': 'search google maps' }}
               />
 
-            <IconButton
-              onClick={() => setSearched(search.current.value)}
-              type="button"
-              sx={{ p: "10px" }}
-              aria-label="search"
+              <IconButton
+                onClick={() => setSearched(search.current.value)}
+                type="button"
+                sx={{ p: "10px" }}
+                aria-label="search"
               >
-              <SearchIcon />
-            </IconButton>
+                <SearchIcon />
+              </IconButton>
+            </div>
           </div>
-              </div>
           <div className="sec2-card-container">
             {projectsLoaded ? (
               projectsArr.length > 0 ? (
-                projectsArr.filter((item) => {
-                  return searched.toLowerCase() === ""
-                    ? item
-                    : (item.title.toLowerCase().includes(searched.toLowerCase()) || 
-                    (item.tags.map((i) => i.toLowerCase()).includes(searched.toLowerCase())));
-                }).map((val, idx) => {
-                  return (
-                    <Card
-                      key={idx}
-                      imgSrc={val.thumbnail}
-                      title={val.title}
-                      tags={val.tags}
-                      desc={val.desc}
-                    />
-                  );
-                })
+                projectsArr
+                  .filter((item) => {
+                    return searched.toLowerCase() === ""
+                      ? item
+                      : item.title
+                          .toLowerCase()
+                          .includes(searched.toLowerCase()) ||
+                          item.tags
+                            .map((i) => i.toLowerCase())
+                            .includes(searched.toLowerCase());
+                  })
+                  .map((val, idx) => {
+                    return (
+                      <Card
+                      details = {val}
+                        onClick={setShowProjectModal}
+                        key={idx}
+                        imgSrc={val.thumbnail}
+                        title={val.title}
+                        tags={val.tags}
+                        desc={val.desc}
+                        setDetails={setDetails}
+                      />
+                    );
+                  })
               ) : (
                 <CircularProgress color="inherit" />
               )
@@ -91,6 +102,15 @@ export default function Projects() {
               <p>No projects found</p>
             )}
             {/* })) : <p>No projects found</p>) : <CircularProgress color="inherit" />} */}
+            { details &&
+
+
+            <ProjectModal
+              show={showProjectModal}
+              onClose={() => setShowProjectModal(false)}
+              data= {details}
+              />
+            }
           </div>
         </div>
       </div>
@@ -98,10 +118,15 @@ export default function Projects() {
   );
 }
 
-function Card({ imgSrc, title, tags, desc }) {
+function Card({ imgSrc, title, tags, desc, onClick, details, setDetails }) {
   return (
     <>
-      <div className="sec2-card">
+      <div onClick={() => {
+        onClick(true)
+        setDetails(details)
+
+      }
+      } className="sec2-card">
         <img src={imgSrc} alt="##" />
         <h3>{title}</h3>
         <p>{desc}</p>
