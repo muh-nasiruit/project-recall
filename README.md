@@ -2,7 +2,8 @@
 manage your projects
 
 ### Application Demo:
-[![S8275.gif](https://s6.gifyu.com/images/S8275.gif)](https://gifyu.com/image/S8275)
+
+<a href="https://gifyu.com/image/S8275"><img src="https://s6.gifyu.com/images/S8275.gif" alt="ProjectRecall" border="0" /></a>
 
 
 ### Project Deliverables
